@@ -18,7 +18,7 @@ public class Customer {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
     public String getId() {
@@ -56,9 +56,9 @@ public class Customer {
         return removeAddress(address.getId());
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
+//    public List<Address> getAddresses() {
+//        return addresses;
+//    }
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;

@@ -3,6 +3,8 @@ package com.blibli.future.phase2.springbootphase2.controller;
 import com.blibli.future.phase2.springbootphase2.model.Customer;
 import com.blibli.future.phase2.springbootphase2.request.RegisterCustomerRequest;
 import com.blibli.future.phase2.springbootphase2.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
+
     @Autowired
     private CustomerService customerService;
 
@@ -23,7 +27,7 @@ public class CustomerController {
             consumes = MediaType.APPLICATION_JSON_VALUE // Apa yang diterima
     )
     public Customer register(@Valid @RequestBody RegisterCustomerRequest request) {
-        return customerService.register(request.getName());
+        return customerService.register(request.getName(), request.getAddress());
     }
 
     @RequestMapping(
