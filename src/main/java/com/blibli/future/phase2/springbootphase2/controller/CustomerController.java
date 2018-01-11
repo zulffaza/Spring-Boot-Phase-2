@@ -1,6 +1,7 @@
 package com.blibli.future.phase2.springbootphase2.controller;
 
 import com.blibli.future.phase2.springbootphase2.model.Customer;
+import com.blibli.future.phase2.springbootphase2.request.EditCustomerRequest;
 import com.blibli.future.phase2.springbootphase2.request.RegisterCustomerRequest;
 import com.blibli.future.phase2.springbootphase2.service.CustomerService;
 import org.slf4j.Logger;
@@ -13,10 +14,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;
@@ -62,7 +61,7 @@ public class CustomerController {
             produces = MediaType.APPLICATION_JSON_VALUE, // Apa yang dikirim
             consumes = MediaType.APPLICATION_JSON_VALUE // Apa yang diterima
     )
-    public Customer editCustomer(@PathVariable String id, @Valid @RequestBody RegisterCustomerRequest request) {
+    public Customer editCustomer(@PathVariable String id, @Valid @RequestBody EditCustomerRequest request) {
         Customer customer = new Customer();
 
         customer.setId(id);

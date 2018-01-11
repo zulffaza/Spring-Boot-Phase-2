@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers/{customerId}/address")
+@RequestMapping("/api/customers/{customerId}/address")
 public class AddressController {
 
     @Autowired
